@@ -1,0 +1,341 @@
+/* Definicao de variaveis em escopo global */
+:root {
+    --altura-header: 20vh;
+    --altura-article: 30vh;
+}
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #eee;
+    font-family: Arial, sans-serif;
+}
+
+/* =====================
+   HEADER
+   ===================== */
+header {
+    width: 100%;
+    height: var(--altura-header);
+    background: linear-gradient(90deg, #e9e7d8, #e9e7d8 60%, orange);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+}
+
+/* LOGO */
+#logo {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+#logo h1 {
+    font-size: 1.8rem;
+    font-style: italic;
+    color: #333;
+}
+
+#logo-img {
+    height: 60px;
+    width: auto;
+    transition: transform 1s ease;
+}
+
+#logo-img:hover {
+    transform: rotate(360deg);
+}
+
+/* NAV */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 0.95rem;
+    transition: transform 0.5s ease;
+    display: inline-block;
+}
+
+nav ul li a:hover {
+    transform: scale(1.5);
+}
+
+/* =====================
+   MAIN
+   ===================== */
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Header principal (h2 + p) */
+#header-main {
+    width: 100%;
+    text-align: center;
+    padding: 40px 20px 20px;
+}
+
+#header-main h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#header-main p {
+    font-style: italic;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+/* =====================
+   PRÓXIMOS EVENTOS
+   ===================== */
+#proximos-eventos {
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 20px 30px;
+    margin-top: 10px;
+}
+
+#proximos-eventos h3 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: orange;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+#proximos-eventos > p {
+    text-align: center;
+    font-style: italic;
+    color: #555;
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+}
+
+/* EVENTO */
+.evento {
+    display: flex;
+    align-items: center;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    transition: 0.3s ease;
+    cursor: pointer; 
+    border: 2px solid  rgb(209, 154, 3);
+   
+}
+
+.evento:hover {
+    background-color: orange;
+    color: #fff;
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.evento img {
+    width: 150px;
+    height: var(--altura-article);
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.dados-evento {
+    padding: 15px 20px;
+    flex: 1;
+}
+
+.dados-evento h4 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.data {
+    font-size: 0.85rem;
+    color: #555;
+    margin-bottom: 4px;
+}
+
+.evento:hover .data {
+    color: #fff;
+}
+
+.local {
+    font-size: 0.8rem;
+    color: #777;
+}
+
+.evento:hover .local {
+    color: #fff;
+}
+
+/* =====================
+   SECTIONS (contato / cadastro)
+   ===================== */
+main > section {
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 30px 40px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+main > section h2 {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: orange;
+    margin-bottom: 16px;
+}
+
+main > section p {
+    font-size: 0.9rem;
+    color: #333;
+    margin-bottom: 6px;
+    text-align: left;
+}
+
+main > section p strong {
+    font-weight: bold;
+}
+
+/* =====================
+   FORMULÁRIOS
+   ===================== */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+form div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 4px;
+}
+
+label {
+    font-size: 0.85rem;
+    color: #333;
+    text-align: left;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="date"],
+textarea {
+    padding: 8px 10px;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    width: 300px;
+    background-color: #fff;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="tel"]:focus,
+input[type="date"]:focus,
+textarea:focus {
+    outline: none;
+    border-color: orange;
+    box-shadow: 0 0 5px rgba(255,165,0,0.5);
+}
+
+input[type="checkbox"] {
+    width: auto;
+    margin-right: 6px;
+}
+
+label:has(input[type="checkbox"]) {
+    display: flex;
+    align-items: center;
+    font-size: 0.85rem;
+    color: #333;
+}
+
+textarea {
+    width: 300px;
+    resize: vertical;
+}
+
+/* BOTÕES */
+button[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 0;
+    width: 300px;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-top: 6px;
+}
+
+button[type="submit"]:hover {
+    background-color: yellowgreen;
+    transform: scale(1.01);
+}
+
+button[type="reset"] {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 0;
+    width: 300px;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-top: 6px;
+}
+
+button[type="reset"]:hover {
+    background-color: orange;
+    transform: scale(1.01);
+}
+
+/* =====================
+   FOOTER
+   ===================== */
+footer {
+    background-color: #222;
+    color: #aaa;
+    text-align: center;
+    padding: 16px;
+    font-size: 0.8rem;
+    width: 100%;
+}

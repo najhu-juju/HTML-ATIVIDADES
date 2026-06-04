@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NovaTech — Soluções Digitais</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #12121a;
+      --accent: #e63946;
+      --accent2: #ff6b6b;
+      --text: #f0eff4;
+      --muted: #8888aa;
+      --border: rgba(255,255,255,0.07);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 4rem;
+      background: rgba(10,10,15,0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .logo {
+      display: flex; align-items: center; gap: 0.6rem;
+      text-decoration: none;
+    }
+    .logo-icon {
+      width: 36px; height: 36px;
+      background: var(--accent);
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800; font-size: 0.9rem;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .logo-text {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800; font-size: 1.3rem;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+    .logo-text span { color: var(--accent); }
+
+    nav { display: flex; gap: 2.5rem; align-items: center; }
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 400;
+      letter-spacing: 0.03em;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--text); }
+    nav a.active { color: var(--accent); }
+    .nav-cta {
+      background: var(--accent) !important;
+      color: #fff !important;
+      padding: 0.5rem 1.2rem;
+      border-radius: 6px;
+      font-weight: 500 !important;
+      transition: background 0.2s, transform 0.15s !important;
+    }
+    .nav-cta:hover { background: var(--accent2) !important; transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 8rem 4rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 70% 50%, rgba(230,57,70,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
+      pointer-events: none;
+    }
+    .hero-content { position: relative; max-width: 680px; }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(230,57,70,0.12);
+      border: 1px solid rgba(230,57,70,0.3);
+      color: var(--accent2);
+      font-size: 0.8rem; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 0.35rem 0.9rem; border-radius: 100px;
+      margin-bottom: 2rem;
+      animation: fadeUp 0.6s ease both;
+    }
+    .hero-tag::before {
+      content: ''; width: 6px; height: 6px;
+      background: var(--accent); border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800; font-size: clamp(2.8rem, 5vw, 4.5rem);
+      line-height: 1.05; letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.6s 0.1s ease both;
+    }
+    h1 em { font-style: normal; color: var(--accent); }
+    .hero-desc {
+      color: var(--muted); font-size: 1.1rem; line-height: 1.7;
+      max-width: 520px; margin-bottom: 2.5rem;
+      animation: fadeUp 0.6s 0.2s ease both;
+    }
+    .hero-btns {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      animation: fadeUp 0.6s 0.3s ease both;
+    }
+    .btn-primary {
+      background: var(--accent); color: #fff;
+      padding: 0.85rem 2rem; border-radius: 8px;
+      text-decoration: none; font-weight: 500; font-size: 0.95rem;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 0 0 0 rgba(230,57,70,0.4);
+    }
+    .btn-primary:hover {
+      background: var(--accent2); transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(230,57,70,0.35);
+    }
+    .btn-outline {
+      border: 1px solid var(--border); color: var(--text);
+      padding: 0.85rem 2rem; border-radius: 8px;
+      text-decoration: none; font-weight: 400; font-size: 0.95rem;
+      transition: border-color 0.2s, background 0.2s, transform 0.15s;
+    }
+    .btn-outline:hover {
+      border-color: rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.04);
+      transform: translateY(-2px);
+    }
+
+    /* ── STATS ── */
+    .stats {
+      display: flex; gap: 3rem; flex-wrap: wrap;
+      padding: 3rem 4rem;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      animation: fadeUp 0.6s 0.4s ease both;
+    }
+    .stat { }
+    .stat-num {
+      font-family: 'Syne', sans-serif; font-weight: 800;
+      font-size: 2.2rem; color: var(--text); letter-spacing: -0.02em;
+    }
+    .stat-num span { color: var(--accent); }
+    .stat-label { color: var(--muted); font-size: 0.85rem; margin-top: 0.2rem; }
+
+    /* ── SECTION ── */
+    section { padding: 5rem 4rem; }
+    .section-tag {
+      display: inline-block;
+      color: var(--accent); font-size: 0.78rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+    h2 {
+      font-family: 'Syne', sans-serif; font-weight: 800;
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      letter-spacing: -0.02em; line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+    .section-desc { color: var(--muted); font-size: 1rem; line-height: 1.7; max-width: 560px; }
+
+    /* ── CARDS ── */
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px; padding: 2rem;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      position: relative; overflow: hidden;
+    }
+    .card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .card:hover { border-color: rgba(230,57,70,0.25); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.4); }
+    .card:hover::before { opacity: 1; }
+    .card-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      background: rgba(230,57,70,0.12);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; margin-bottom: 1.2rem;
+    }
+    .card h3 { font-family: 'Syne', sans-serif; font-weight: 600; font-size: 1.1rem; margin-bottom: 0.6rem; }
+    .card p { color: var(--muted); font-size: 0.9rem; line-height: 1.6; }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2rem 4rem;
+      border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+    }
+    footer p { color: var(--muted); font-size: 0.85rem; }
+    footer nav { gap: 1.5rem; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 1rem 1.5rem; }
+      .hero { padding: 7rem 1.5rem 3rem; }
+      section { padding: 3rem 1.5rem; }
+      .stats { padding: 2rem 1.5rem; gap: 2rem; }
+      footer { padding: 2rem 1.5rem; flex-direction: column; align-items: flex-start; }
+      nav { gap: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo">
+    <div class="logo-icon">N</div>
+    <span class="logo-text">Nova<span>Tech</span></span>
+  </a>
+  <nav>
+    <a href="index.html" class="active">Início</a>
+    <a href="sobre.html">Sobre</a>
+    <a href="servicos.html">Serviços</a>
+    <a href="contato.html" class="nav-cta">Contato</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <div class="hero-tag">Soluções Digitais Modernas</div>
+      <h1>Transformamos ideias em <em>experiências digitais</em></h1>
+      <p class="hero-desc">Desenvolvemos sites, sistemas e aplicações web com tecnologia de ponta. Do conceito à entrega, criamos produtos que fazem a diferença.</p>
+      <div class="hero-btns">
+        <a href="servicos.html" class="btn-primary">Nossos Serviços</a>
+        <a href="sobre.html" class="btn-outline">Saiba mais →</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-num">+150<span>.</span></div>
+      <div class="stat-label">Projetos entregues</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">98<span>%</span></div>
+      <div class="stat-label">Clientes satisfeitos</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">8<span>+</span></div>
+      <div class="stat-label">Anos de mercado</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">24<span>h</span></div>
+      <div class="stat-label">Suporte dedicado</div>
+    </div>
+  </div>
+
+  <section id="destaques">
+    <div class="section-tag">Por que nos escolher</div>
+    <h2>Tecnologia que <br/>impulsiona resultados</h2>
+    <p class="section-desc">Combinamos design estratégico com desenvolvimento robusto para criar soluções que realmente funcionam.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">⚡</div>
+        <h3>Performance</h3>
+        <p>Sites rápidos e otimizados para os melhores resultados em SEO e experiência do usuário.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🎨</div>
+        <h3>Design Único</h3>
+        <p>Identidade visual consistente e interfaces intuitivas pensadas para o seu público.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔒</div>
+        <h3>Segurança</h3>
+        <p>Proteção de dados e melhores práticas de segurança em todos os nossos projetos.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📱</div>
+        <h3>Responsivo</h3>
+        <p>Perfeito em qualquer dispositivo — desktop, tablet ou smartphone.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>© 2026 NovaTech. Todos os direitos reservados.</p>
+  <nav style="display:flex; gap:1.5rem;">
+    <a href="sobre.html" style="color:var(--muted);text-decoration:none;font-size:0.85rem;">Sobre</a>
+    <a href="servicos.html" style="color:var(--muted);text-decoration:none;font-size:0.85rem;">Serviços</a>
+    <a href="contato.html" style="color:var(--muted);text-decoration:none;font-size:0.85rem;">Contato</a>
+  </nav>
+</footer>
+
+</body>
+</html>

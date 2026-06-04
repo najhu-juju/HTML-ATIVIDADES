@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Serviços — NovaTech</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #0a0a0f; --surface: #12121a; --accent: #e63946; --accent2: #ff6b6b;
+      --text: #f0eff4; --muted: #8888aa; --border: rgba(255,255,255,0.07);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; font-weight: 300; }
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 4rem;
+      background: rgba(10,10,15,0.85); backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .logo { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; }
+    .logo-icon {
+      width: 36px; height: 36px; background: var(--accent);
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Syne', sans-serif; font-weight: 800; font-size: 0.9rem; color: #fff;
+    }
+    .logo-text { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.3rem; color: var(--text); }
+    .logo-text span { color: var(--accent); }
+    nav { display: flex; gap: 2.5rem; align-items: center; }
+    nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+    nav a:hover { color: var(--text); }
+    nav a.active { color: var(--accent); }
+    .nav-cta { background: var(--accent) !important; color: #fff !important; padding: 0.5rem 1.2rem; border-radius: 6px; font-weight: 500 !important; }
+
+    .page-hero {
+      padding: 10rem 4rem 4rem;
+      background: radial-gradient(ellipse 60% 50% at 70% 30%, rgba(230,57,70,0.1) 0%, transparent 70%);
+    }
+    .section-tag { display: inline-block; color: var(--accent); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.8rem; }
+    h1 { font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(2.2rem, 4vw, 3.5rem); letter-spacing: -0.03em; margin-bottom: 1rem; }
+    h1 em { font-style: normal; color: var(--accent); }
+    .lead { color: var(--muted); font-size: 1.1rem; line-height: 1.7; max-width: 600px; }
+
+    .content { padding: 3rem 4rem 5rem; }
+
+    .services-list { display: flex; flex-direction: column; gap: 1px; margin-top: 3rem; }
+    .service-item {
+      display: grid; grid-template-columns: 80px 1fr auto;
+      align-items: center; gap: 2rem;
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--border);
+      cursor: default;
+      transition: padding-left 0.3s;
+    }
+    .service-item:hover { padding-left: 1rem; }
+    .service-item:hover .service-num { color: var(--accent); }
+    .service-num { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1rem; color: var(--border); transition: color 0.3s; }
+    .service-body h2 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.3rem; letter-spacing: -0.01em; margin-bottom: 0.4rem; }
+    .service-body p { color: var(--muted); font-size: 0.9rem; line-height: 1.6; }
+    .service-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.8rem; }
+    .tag {
+      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.05em;
+      padding: 0.2rem 0.6rem; border-radius: 100px;
+      border: 1px solid var(--border); color: var(--muted);
+    }
+    .service-arrow { color: var(--muted); font-size: 1.5rem; transition: transform 0.2s, color 0.2s; }
+    .service-item:hover .service-arrow { transform: translateX(6px); color: var(--accent); }
+
+    .cta-section {
+      margin-top: 4rem;
+      background: var(--surface); border: 1px solid var(--border); border-radius: 20px;
+      padding: 3rem; text-align: center;
+    }
+    .cta-section h2 { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.8rem; margin-bottom: 0.8rem; }
+    .cta-section p { color: var(--muted); margin-bottom: 1.8rem; }
+    .btn-primary {
+      display: inline-block; background: var(--accent); color: #fff;
+      padding: 0.85rem 2rem; border-radius: 8px;
+      text-decoration: none; font-weight: 500;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { background: var(--accent2); transform: translateY(-2px); }
+
+    footer { padding: 2rem 4rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    footer p { color: var(--muted); font-size: 0.85rem; }
+
+    @media (max-width: 768px) {
+      header { padding: 1rem 1.5rem; }
+      .page-hero, .content { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .service-item { grid-template-columns: 1fr; }
+      .service-num, .service-arrow { display: none; }
+      footer { padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo">
+    <div class="logo-icon">N</div>
+    <span class="logo-text">Nova<span>Tech</span></span>
+  </a>
+  <nav>
+    <a href="index.html">Início</a>
+    <a href="sobre.html">Sobre</a>
+    <a href="servicos.html" class="active">Serviços</a>
+    <a href="contato.html" class="nav-cta">Contato</a>
+  </nav>
+</header>
+
+<main>
+  <div class="page-hero">
+    <div class="section-tag">O que fazemos</div>
+    <h1>Serviços que <em>geram impacto</em></h1>
+    <p class="lead">Da estratégia à execução, oferecemos soluções digitais completas para o seu negócio crescer online.</p>
+  </div>
+
+  <div class="content">
+    <div class="services-list">
+      <div class="service-item">
+        <span class="service-num">01</span>
+        <div class="service-body">
+          <h2>Desenvolvimento Web</h2>
+          <p>Sites institucionais, landing pages e portais corporativos com foco em performance e conversão.</p>
+          <div class="service-tags">
+            <span class="tag">HTML/CSS</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">React</span>
+            <span class="tag">WordPress</span>
+          </div>
+        </div>
+        <span class="service-arrow">→</span>
+      </div>
+      <div class="service-item">
+        <span class="service-num">02</span>
+        <div class="service-body">
+          <h2>Sistemas Web</h2>
+          <p>Aplicações sob medida para automatizar processos e otimizar a gestão da sua empresa.</p>
+          <div class="service-tags">
+            <span class="tag">Node.js</span>
+            <span class="tag">Python</span>
+            <span class="tag">Banco de Dados</span>
+            <span class="tag">APIs REST</span>
+          </div>
+        </div>
+        <span class="service-arrow">→</span>
+      </div>
+      <div class="service-item">
+        <span class="service-num">03</span>
+        <div class="service-body">
+          <h2>E-commerce</h2>
+          <p>Lojas virtuais completas com gestão de estoque, pagamentos e painel administrativo intuitivo.</p>
+          <div class="service-tags">
+            <span class="tag">WooCommerce</span>
+            <span class="tag">Shopify</span>
+            <span class="tag">Pagamento Online</span>
+          </div>
+        </div>
+        <span class="service-arrow">→</span>
+      </div>
+      <div class="service-item">
+        <span class="service-num">04</span>
+        <div class="service-body">
+          <h2>UI/UX Design</h2>
+          <p>Interfaces elegantes e experiências de usuário pensadas para engajar e converter visitantes em clientes.</p>
+          <div class="service-tags">
+            <span class="tag">Figma</span>
+            <span class="tag">Protótipos</span>
+            <span class="tag">Design System</span>
+          </div>
+        </div>
+        <span class="service-arrow">→</span>
+      </div>
+      <div class="service-item">
+        <span class="service-num">05</span>
+        <div class="service-body">
+          <h2>Manutenção & Suporte</h2>
+          <p>Cuidamos do seu projeto depois da entrega: atualizações, backups e suporte técnico contínuo.</p>
+          <div class="service-tags">
+            <span class="tag">Monitoramento</span>
+            <span class="tag">Segurança</span>
+            <span class="tag">Atualizações</span>
+          </div>
+        </div>
+        <span class="service-arrow">→</span>
+      </div>
+    </div>
+
+    <div class="cta-section">
+      <h2>Pronto para começar?</h2>
+      <p>Entre em contato e receba uma proposta personalizada para o seu projeto.</p>
+      <a href="contato.html" class="btn-primary">Falar com a equipe →</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>© 2026 NovaTech. Todos os direitos reservados.</p>
+  <nav style="display:flex;gap:1.5rem;">
+    <a href="sobre.html" style="color:var(--muted);text-decoration:none;font-size:0.85rem;">Sobre</a>
+    <a href="servicos.html" style="color:var(--muted);text-decoration:none;font-size:0.85rem;">Serviços</a>
+    <a href="contato.html" style="color:var(--muted);text-decoration:none;font-size:0.85rem;">Contato</a>
+  </nav>
+</footer>
+</body>
+</html>

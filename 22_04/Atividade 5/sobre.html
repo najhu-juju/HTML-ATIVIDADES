@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sobre — NovaTech</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #0a0a0f; --surface: #12121a; --accent: #e63946; --accent2: #ff6b6b;
+      --text: #f0eff4; --muted: #8888aa; --border: rgba(255,255,255,0.07);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; font-weight: 300; }
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 4rem;
+      background: rgba(10,10,15,0.85); backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .logo { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; }
+    .logo-icon {
+      width: 36px; height: 36px; background: var(--accent);
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Syne', sans-serif; font-weight: 800; font-size: 0.9rem; color: #fff;
+    }
+    .logo-text { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.3rem; color: var(--text); }
+    .logo-text span { color: var(--accent); }
+    nav { display: flex; gap: 2.5rem; align-items: center; }
+    nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 400; transition: color 0.2s; }
+    nav a:hover { color: var(--text); }
+    nav a.active { color: var(--accent); }
+    .nav-cta {
+      background: var(--accent) !important; color: #fff !important;
+      padding: 0.5rem 1.2rem; border-radius: 6px; font-weight: 500 !important;
+    }
+
+    .page-hero {
+      padding: 10rem 4rem 4rem;
+      background: radial-gradient(ellipse 60% 50% at 30% 40%, rgba(230,57,70,0.1) 0%, transparent 70%);
+    }
+    .section-tag { display: inline-block; color: var(--accent); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.8rem; }
+    h1 { font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(2.2rem, 4vw, 3.5rem); letter-spacing: -0.03em; margin-bottom: 1rem; }
+    h1 em { font-style: normal; color: var(--accent); }
+    .lead { color: var(--muted); font-size: 1.1rem; line-height: 1.7; max-width: 600px; }
+
+    .content { padding: 3rem 4rem 5rem; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    h2 { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.8rem; letter-spacing: -0.02em; margin-bottom: 1.2rem; }
+    p { color: var(--muted); line-height: 1.8; margin-bottom: 1rem; }
+
+    .values { margin-top: 3rem; }
+    .value-item {
+      display: flex; gap: 1.2rem; align-items: flex-start;
+      padding: 1.5rem 0; border-bottom: 1px solid var(--border);
+    }
+    .value-item:last-child { border-bottom: none; }
+    .value-num { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.5rem; color: var(--accent); flex-shrink: 0; width: 2rem; }
+    .value-text h3 { font-family: 'Syne', sans-serif; font-weight: 600; font-size: 1rem; margin-bottom: 0.3rem; }
+    .value-text p { margin: 0; font-size: 0.9rem; }
+
+    .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+    .team-card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 2rem;
+      text-align: center;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .team-card:hover { border-color: rgba(230,57,70,0.25); transform: translateY(-3px); }
+    .avatar {
+      width: 64px; height: 64px; border-radius: 50%; margin: 0 auto 1rem;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.3rem; color: #fff;
+    }
+    .team-card h3 { font-family: 'Syne', sans-serif; font-weight: 600; font-size: 1rem; margin-bottom: 0.3rem; }
+    .team-card p { font-size: 0.8rem; color: var(--accent2); margin: 0; }
+
+    footer { padding: 2rem 4rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    footer p { color: var(--muted); font-size: 0.85rem; }
+
+    @media (max-width: 768px) {
+      header { padding: 1rem 1.5rem; }
+      .page-hero, .content { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .two-col { grid-template-columns: 1fr; gap: 2rem; }
+      footer { padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo">
+    <div class="logo-icon">N</div>
+    <span class="logo-text">Nova<span>Tech</span></span>
+  </a>
+  <nav>
+    <a href="index.html">Início</a>
+    <a href="sobre.html" class="active">Sobre</a>
+    <a href="servicos.html">Serviços</a>
+    <a href="contato.html" class="nav-cta">Contato</a>
+  </nav>
+</header>
+
+<main>
+  <div class="page-hero">
+    <div class="section-tag">Quem somos</div>
+    <h1>Apaixonados por <em>tecnologia</em></h1>
+    <p class="lead">Somos uma equipe de desenvolvedores e designers dedicados a criar experiências digitais extraordinárias para empresas que querem crescer.</p>
+  </div>
+
+  <div class="content">
+    <div class="two-col">
+      <div>
+        <h2>Nossa história</h2>
+        <p>A NovaTech nasceu em 2016 com uma missão clara: democratizar o acesso a soluções digitais de qualidade para empresas de todos os tamanhos.</p>
+        <p>Ao longo dos anos, construímos uma reputação sólida baseada em entregas consistentes, comunicação transparente e resultados mensuráveis para nossos clientes.</p>
+        <p>Hoje, somos referência em desenvolvimento web e continuamos crescendo, sempre mantendo o foco na excelência técnica e na satisfação de quem nos contrata.</p>
+      </div>
+      <div class="values">
+        <div class="value-item">
+          <span class="value-num">01</span>
+          <div class="value-text">
+            <h3>Qualidade sem compromisso</h3>
+            <p>Cada linha de código é escrita com cuidado e atenção aos detalhes.</p>
+          </div>
+        </div>
+        <div class="value-item">
+          <span class="value-num">02</span>
+          <div class="value-text">
+            <h3>Transparência total</h3>
+            <p>Comunicação aberta e honesta em todas as etapas do projeto.</p>
+          </div>
+        </div>
+        <div class="value-item">
+          <span class="value-num">03</span>
+          <div class="value-text">
+            <h3>Foco no resultado</h3>
+            <p>Medimos nosso sucesso pelo sucesso dos nossos clientes.</p>
+          </div>
+        </div>
+        <div class="value-item">
+          <span class="value-num">04</span>
+          <div class="value-text">
+            <h3>Inovação constante</h3>
+            <p>Sempre atualizados com as últimas tecnologias do mercado.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 5rem;">
+      <div class="section-tag">Time</div>
+      <h2>As pessoas por trás da NovaTech</h2>
+      <div class="team-grid">
+        <div class="team-card"><div class="avatar">AM</div><h3>Ana Martins</h3><p>CEO & Co-fundadora</p></div>
+        <div class="team-card"><div class="avatar">RC</div><h3>Rafael Costa</h3><p>CTO & Co-fundador</p></div>
+        <div class="team-card"><div class="avatar">JS</div><h3>Juliana Silva</h3><p>Lead Designer</p></div>
+        <div class="team-card"><div class="avatar">PO</div><h3>Pedro Oliveira</h3><p>Dev Sênior</p></div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>© 2026 NovaTech. Todos os direitos reservados.</p>
+  <nav style="display:flex;gap:1.5rem;">
+    <a href="sobre.html" style="color:var(--muted);text-decoration:none;font-size:0.85rem;">Sobre</a>
+    <a href="servicos.html" style="color:var(--muted);text-decoration:none;font-size:0.85rem;">Serviços</a>
+    <a href="contato.html" style="color:var(--muted);text-decoration:none;font-size:0.85rem;">Contato</a>
+  </nav>
+</footer>
+</body>
+</html>

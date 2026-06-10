@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Básica</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="calculadora">
+        <input type="text" id="visor" readonly>
+        <div class="botoes">
+            <button onclick="limparVisor()">C</button>
+            <button onclick="apagarUltimo()">←</button>
+            <button onclick="adicionarCaractere('/')">/</button>
+            <button onclick="adicionarCaractere('*')">x</button>
+
+            <button onclick="adicionarCaractere('7')">7</button>
+            <button onclick="adicionarCaractere('8')">8</button>
+            <button onclick="adicionarCaractere('9')">9</button>
+            <button onclick="adicionarCaractere('-')">-</button>
+
+            <button onclick="adicionarCaractere('4')">4</button>
+            <button onclick="adicionarCaractere('5')">5</button>
+            <button onclick="adicionarCaractere('6')">6</button>
+            <button onclick="adicionarCaractere('+')">+</button>
+
+            <button onclick="adicionarCaractere('1')">1</button>
+            <button onclick="adicionarCaractere('2')">2</button>
+            <button onclick="adicionarCaractere('3')">3</button>
+            <button class="igual" onclick="calcularResultado()">=</button>
+
+            <button class="zero" onclick="adicionarCaractere('0')">0</button>
+            <button onclick="adicionarCaractere('.')">.</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
